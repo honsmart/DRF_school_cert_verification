@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Student(models.Model):
     student_id = models.CharField(max_length=10, primary_key=True)
     certificate_id = models.CharField(max_length=10, unique=True)
@@ -12,6 +13,8 @@ class Student(models.Model):
     graduation_year = models.PositiveIntegerField()
     access_code = models.CharField(max_length=10, unique=True)
     is_valid = models.BooleanField(default=True)
+    certificate_image = models.ImageField(
+        upload_to='certificates/', default='media/certicates/image.jpg')
 
     def __str__(self):
         return f"Certificate ID: {self.certificate_id}, Student ID: {self.student_id}, Student Name: {self.student_name}"
